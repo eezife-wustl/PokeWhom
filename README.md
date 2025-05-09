@@ -27,9 +27,9 @@ vectorizer = CountVectorizer(ngram_range=(1, 2))
 X_train_vec = vectorizer.fit_transform(X_train)
 X_test_vec = vectorizer.transform(X_test)
 ```
-<br>
+
 After that, I encoded the labels:
-<br>
+
 ```python
 label_train = train_df["type_primary"]
 label_test = test_df["type_primary"]
@@ -40,13 +40,16 @@ encoder.fit(pokemon["type_primary"])
 label_train_enc = encoder.transform(label_train)
 label_test_enc = encoder.transform(label_test)
 ```
-<br>
+
 Then, I set up my model, which is a simple Logistic Regression model, to make the predictions:
+
+```python
 model = LogisticRegression(max_iter=1000, class_weight="balanced", solver="liblinear")
 model.fit(X_train_vec, label_train_enc)
 type_pred_enc = model.predict(features_test)
 type_pred = encoder.inverse_transform(type_pred_enc)
-<br>
+```
+
 The results came out to be… extremely inaccurate, with some types were not being predicted at all, resulting in 0 F1 scores. I think this has to do with the data that exists – basically some types are more common than others, with water type being the most common. I decided to make some changes to account for this discrepancy in hopes of getting a little more accurate. I also wanted to experiment with the model I chose because I picked with I was most familiar with, but there could be a better option.<br>
 
 ## Attempt 2
