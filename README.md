@@ -5,6 +5,7 @@ http://localhost:8888 <br>
 **Credits:**<br>
 https://medium.com/@18bhavyasharma/setting-up-and-running-jupyter-notebook-in-a-docker-container-d2acd713ce66 <br>
 https://www.youtube.com/watch?v=7-naqq9fvZE <br>
+https://medium.com/analytics-vidhya/predicting-pok%C3%A9mon-type-with-the-pok%C3%A9dex-7038754dc422
 
 ## Introduction <br>
 I love Pokémon, so when I came across this dataset on Kaggle, I had to make use of it. The thought process was simple - there are 18 types of Pokémon, each based on a certain element (i.e Water, Fire, Lightning, etc.) Each Pokémon is categorized into one type (with some having 2 types). In addition, each Pokémon has a written description. Here's an example from the Dataset: 
