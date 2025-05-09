@@ -22,7 +22,7 @@ Then, I split the data with 80% of the data being used for training and 20% bein
 ```python
 x = pokemon["desc_clean"]
 y = pokemon["type_primary"]
-X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=4, stratify=y)
+X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42, stratify=y)
 
 vectorizer = CountVectorizer(ngram_range=(1, 2))
 X_train_vec = vectorizer.fit_transform(X_train)
@@ -45,7 +45,7 @@ label_test_enc = encoder.transform(label_test)
 Then, I set up my model, which is a simple Logistic Regression model, to make the predictions:
 
 ```python
-model = LogisticRegression(max_iter=1000, class_weight="balanced", solver="liblinear")
+model =  LogisticRegression(max_iter=1000, class_weight="balanced",solver="liblinear")
 model.fit(X_train_vec, label_train_enc)
 type_pred_enc = model.predict(X_test_vec)
 type_pred = encoder.inverse_transform(type_pred_enc)
