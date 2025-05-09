@@ -46,10 +46,11 @@ Then, I set up my model, which is a simple Logistic Regression model, to make th
 ```python
 model = LogisticRegression(max_iter=1000, class_weight="balanced", solver="liblinear")
 model.fit(X_train_vec, label_train_enc)
-type_pred_enc = model.predict(features_test)
+type_pred_enc = model.predict(X_test_vec)
 type_pred = encoder.inverse_transform(type_pred_enc)
 ```
 
 The results came out to be… extremely inaccurate, with some types were not being predicted at all, resulting in 0 F1 scores. I think this has to do with the data that exists – basically some types are more common than others, with water type being the most common. I decided to make some changes to account for this discrepancy in hopes of getting a little more accurate. I also wanted to experiment with the model I chose because I picked with I was most familiar with, but there could be a better option.<br>
 
 ## Attempt 2
+As a matter of fact, I'm not the only one to have this idea. So upon doing further research, I found some other people's explorations on how they created a Pokemon type classifier. I got some good ideas from this. I removed common words like "can" and "the" from the Pokemon descriptions. This immediatly increased the f1 score from 0.28 to 0.35.
